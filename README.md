@@ -21,6 +21,7 @@ It support all formatters that can be used with `conform.nvim` becuase the forma
 require("turato.mcf").setup({
 	formatters = {
 		sh = { "shfmt" },
+        -- language = { formatter1, formatter2,... }
 	},
 })
 ```
