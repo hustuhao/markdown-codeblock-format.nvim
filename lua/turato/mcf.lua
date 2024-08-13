@@ -22,6 +22,7 @@ function M.format_with_conform(language, code_content, bufnr, range)
 	-- If there are  formatters for this language, return true
 	if not formatters_for_lang then
 		log.error("no formmatter setup for %s.", language)
+		vim.notify(string.format("No formatter setup for %s.", language), vim.log.levels.INFO)
 		return code_content
 	end
 
