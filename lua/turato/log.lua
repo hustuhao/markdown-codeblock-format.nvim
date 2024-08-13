@@ -7,7 +7,7 @@ end
 local Log = {}
 
 ---@type integer
-Log.level = vim.log.levels.DEBUG
+Log.level = vim.log.levels.WARN
 
 ---@return string
 Log.get_logfile = function()
@@ -43,19 +43,18 @@ local function format(level, msg, ...)
 	local line_number = debug_info and debug_info.currentline or "unknown"
 	local source = debug_info and debug_info.short_src or "unknown"
 
-	-- Get the full call stack
-	local traceback = debug.traceback("", 3) -- Start trace from 3 levels up to exclude logging functions
+	-- -- Get the full call stack
+	-- local traceback = debug.traceback("", 3) -- Start trace from 3 levels up to exclude logging functions
 
 	if ok then
 		local str_level = levels_reverse[level]
-		return string.format("%s[%s] %s:%d %s\n%s", timestr, str_level, source, line_number, text, traceback)
+		return string.format("%s[%s] %s:%d %s", timestr, str_level, source, line_number, text)
 	else
 		return string.format(
-			"%s[ERROR] error formatting log line: '%s' args %s\n%s",
+			"%s[ERROR] error formatting log line: '%s' args %s",
 			timestr,
 			vim.inspect(msg),
-			vim.inspect(args),
-			traceback
+			vim.inspect(args)
 		)
 	end
 end

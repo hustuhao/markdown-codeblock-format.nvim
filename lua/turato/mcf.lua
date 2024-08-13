@@ -66,6 +66,7 @@ function M.format_with_conform(language, code_content, bufnr, range)
 		end
 		if not did_edit then
 			log.info("No changes were made.")
+			vim.notify("No changes were made.", vim.log.levels.INFO)
 			return
 		end
 
@@ -85,6 +86,7 @@ function M.format_with_conform(language, code_content, bufnr, range)
 			range["end"][2],
 			vim.split(formatted_code .. "\n", "\n")
 		)
+		vim.notify("Formatting success.", vim.log.levels.INFO)
 	end)
 
 	if not success then
@@ -115,7 +117,7 @@ function M.format_selected_code()
 	end
 	log.debug("find language:%s.", language)
 
-	table.remove(lines, 1) -- Remove first line: ```
+	table.remove(lines, 1)    -- Remove first line: ```
 	table.remove(lines, #lines) -- Remove the last line ```
 	local code_content = table.concat(lines, "\n")
 
