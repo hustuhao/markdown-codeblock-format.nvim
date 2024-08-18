@@ -39,7 +39,7 @@ local function format(level, msg, ...)
 	local timestr = vim.fn.strftime("%H:%M:%S")
 
 	-- Get the line number and file name from the debug info
-	local debug_info = debug.getinfo(3, "Sl") -- 3 levels up to get the caller
+	local debug_info = debug.getinfo(4, "Sl") -- 3 levels up to get the caller
 	local line_number = debug_info and debug_info.currentline or "unknown"
 	local source = debug_info and debug_info.short_src or "unknown"
 

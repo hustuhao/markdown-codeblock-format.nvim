@@ -21,7 +21,7 @@ It support all formatters that can be used with `conform.nvim` becuase the forma
 require("mcf").setup({
 	formatters = {
 		sh = { "shfmt" },
-        -- language = { formatter1, formatter2,... }
+		-- language = { formatter1, formatter2,... }
 	},
 })
 ```
@@ -49,22 +49,19 @@ return {
 	dependencies = {
 		"stevearc/conform.nvim",
 	},
-	config = function()
-		local opts = {
-			-- Define the formatters to use for each language
-			formatters = {
-				lua = { "stylua" },
-				python = { "black" },
-				javascript = { "prettier" },
-				sh = { "shfmt" },
-				sql = { "sqlfmt" },
-				go = { "goimports", "gofmt" },
-				rust = { "rustfmt" },
-			},
-		}
-
-		require("mcf").setup(opts)
-	end,
+	opts = {
+		-- Define the formatters to use for each language
+		formatters = {
+			lua = { "stylua" },
+			python = { "black" },
+			javascript = { "prettier" },
+			sh = { "shfmt" },
+			sql = { "sqlfmt" },
+			go = { "goimports", "gofmt" },
+			rust = { "rustfmt" },
+		},
+		log_level = vim.log.levels.ERROR, -- default log level is warn
+	},
 
 	keys = {
 		-- Define key mappings using the 'keys' configuration in LazyVim

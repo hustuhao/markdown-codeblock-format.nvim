@@ -118,7 +118,7 @@ function M.format_selected_code()
 	end
 	log.debug("find language:%s.", language)
 
-	table.remove(lines, 1)    -- Remove first line: ```
+	table.remove(lines, 1) -- Remove first line: ```
 	table.remove(lines, #lines) -- Remove the last line ```
 	local code_content = table.concat(lines, "\n")
 
@@ -137,6 +137,7 @@ end
 function M.setup(opts)
 	opts = opts or {}
 	M.setup_formatter(opts)
+	M.setup_log_level(opts)
 end
 
 function M.setup_formatter(opts)
@@ -148,6 +149,12 @@ function M.setup_formatter(opts)
 		log.debug("setup formaters:", opts.formaters)
 	end
 	log.debug("load mf formatter end")
+end
+
+function M.setup_log_level(opts)
+	if opts.log_level then
+		require("mcf.log").level = opts.log_level
+	end
 end
 
 -- Trim leading and trailing whitespace
