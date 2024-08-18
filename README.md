@@ -18,7 +18,7 @@ A simple plugin to format selected code block in markdown file based on conform.
 It support all formatters that can be used with `conform.nvim` becuase the format function is just a invoking of  
 
 ```lua 
-require("turato.mcf").setup({
+require("mcf").setup({
 	formatters = {
 		sh = { "shfmt" },
         -- language = { formatter1, formatter2,... }
@@ -32,7 +32,7 @@ require("turato.mcf").setup({
 vim.api.nvim_set_keymap(
     "v",
     "<leader>fm",
-    ':lua require("turato.mcf").format_selected_code()<CR>',
+    ':lua require("mcf").format_selected_code()<CR>',
     { noremap = true, silent = true }
 )
 ```
@@ -63,14 +63,14 @@ return {
 			},
 		}
 
-		require("turato.mcf").setup(opts)
+		require("mcf").setup(opts)
 	end,
 
 	keys = {
 		-- Define key mappings using the 'keys' configuration in LazyVim
 		{
 			"<leader>fm",
-			':lua require("turato.mcf").format_selected_code()<CR>',
+			':lua require("mcf").format_selected_code()<CR>',
 			mode = "v", -- Visual mode
 			noremap = true,
 			silent = true,
@@ -102,7 +102,7 @@ return require("packer").startup(function()
 					rust = { "rustfmt" },
 				},
 			}
-			require("turato.mcf").setup(opts)
+			require("mcf").setup(opts)
 		end,
 	})
 
@@ -110,10 +110,9 @@ return require("packer").startup(function()
 	vim.api.nvim_set_keymap(
 		"v",
 		"<leader>fm",
-		':lua require("turato.mcf").format_selected_code()<CR>',
+		':lua require("mcf").format_selected_code()<CR>',
 		{ noremap = true, silent = true }
 	)
 end)
 ```
 </details>
-
