@@ -38,7 +38,7 @@ function M.format_with_conform(language, code_content, bufnr, range)
 	end, conform.list_all_formatters())
 
 	if #formatters == 0 then
-		log.error("no formmatter setup for %s.", language)
+		log.error("no formmatter setup for %s.Please check conform.nvim config. config.", language)
 		return code_content
 	end
 
@@ -118,7 +118,7 @@ function M.format_selected_code()
 	end
 	log.debug("find language:%s.", language)
 
-	table.remove(lines, 1)    -- Remove first line: ```
+	table.remove(lines, 1) -- Remove first line: ```
 	table.remove(lines, #lines) -- Remove the last line ```
 	local code_content = table.concat(lines, "\n")
 
@@ -135,8 +135,10 @@ function M.format_selected_code()
 end
 
 function M.setup(opts)
+	log.debug("load mf end, opts:", opts)
 	opts = opts or {}
 	M.setup_formatter(opts.formatters)
+	log.debug("load mf start, opts:", opts)
 end
 
 function M.setup_formatter(opts)
@@ -145,7 +147,7 @@ function M.setup_formatter(opts)
 		for lang, formatters in pairs(opts.formatters) do
 			M.formatters[lang] = formatters
 		end
-		log.debug(vim.inspect(opts.formaters))
+		log.debug("setup formaters:", vim.inspect(opts.formaters))
 	end
 	log.debug("load mf formatter end")
 end
