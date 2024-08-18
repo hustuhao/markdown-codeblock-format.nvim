@@ -11,7 +11,7 @@ Log.level = vim.log.levels.WARN
 
 ---@return string
 Log.get_logfile = function()
-	local fs = require("turato.fs")
+	local fs = require("mcf.fs")
 
 	local ok, stdpath = pcall(vim.fn.stdpath, "log")
 	if not ok then

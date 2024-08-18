@@ -77,7 +77,7 @@ M.relative_path = function(source, target)
 		-- If source is a root directory, we can't go up further so there is no relative path to the
 		-- target. This should only happen on Windows, which prohibits relative paths between drives.
 		if source == new_source then
-			local log = require("turato.log")
+			local log = require("mcf.log")
 			log.warn("Could not find relative path from %s to %s", source, target)
 			return target
 		end

@@ -1,4 +1,4 @@
-local log = require("turato.log")
+local log = require("mcf.log")
 local conform = require("conform")
 
 local M = {}
@@ -118,7 +118,7 @@ function M.format_selected_code()
 	end
 	log.debug("find language:%s.", language)
 
-	table.remove(lines, 1) -- Remove first line: ```
+	table.remove(lines, 1)    -- Remove first line: ```
 	table.remove(lines, #lines) -- Remove the last line ```
 	local code_content = table.concat(lines, "\n")
 
