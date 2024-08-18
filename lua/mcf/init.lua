@@ -135,10 +135,8 @@ function M.format_selected_code()
 end
 
 function M.setup(opts)
-	log.debug("load mf end, opts:", opts)
 	opts = opts or {}
-	M.setup_formatter(opts.formatters)
-	log.debug("load mf start, opts:", opts)
+	M.setup_formatter(opts)
 end
 
 function M.setup_formatter(opts)
@@ -147,7 +145,7 @@ function M.setup_formatter(opts)
 		for lang, formatters in pairs(opts.formatters) do
 			M.formatters[lang] = formatters
 		end
-		log.debug("setup formaters:", vim.inspect(opts.formaters))
+		log.debug("setup formaters:", opts.formaters)
 	end
 	log.debug("load mf formatter end")
 end
